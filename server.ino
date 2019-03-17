@@ -51,16 +51,39 @@ function ajaxLoad(ajaxURL)
     if(ajaxRequest.readyState == 4 && ajaxRequest.status==200)
     {
       var ajaxResult = ajaxRequest.responseText;
-      document.getElementById("bme").innerHTML = ajaxResult;
+      var obj = JSON.parse(ajaxResult);
+      document.getElementById("sensor").rows[0].cells[1].innerText=obj.temperature
+      document.getElementById("sensor").rows[1].cells[1].innerText=obj.Humidity
+      document.getElementById("sensor").rows[2].cells[1].innerText=obj.Pressure
+      document.getElementById("sensor").rows[3].cells[1].innerText=obj.Altitude
     }
   }
   ajaxRequest.send();
 }
  
 </script>
- <p id = "bme">Sensor values</p>
+ 
 <body>
-
+<table border=1 id="sensor">
+<tr>
+<td>temperature</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Humidity</td>
+<td>0</td>
+</tr>
+</tr>
+<tr>
+<td>Pressure</td>
+<td>0</td>
+</tr>
+</tr>
+<tr>
+<td>Altitude</td>
+<td>0</td>
+</tr>
+</table>
 </body>
 </html>
  
@@ -118,7 +141,7 @@ void loop()
           client.print( header );
           //client.print( count++);
           serializeJson(object,client);
-          serializeJson(object,Serial);
+          //serializeJson(object,Serial);
     }
     else
     {
