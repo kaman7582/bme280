@@ -8,8 +8,8 @@
 #include <Adafruit_BME280.h>
 
 // Replace with your network credentials
-const char* ssid     = "qiao qiao house";
-const char* password = "198422hk";
+const char* ssid     = "xxx";
+const char* password = "xxx";
 
 // Set web server port number to 80
 WiFiServer server(80);
